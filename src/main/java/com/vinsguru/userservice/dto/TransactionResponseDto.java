@@ -1,2 +1,14 @@
-package com.vinsguru.userservice.dto;public class TransactionResponseDto {
+package com.vinsguru.userservice.dto;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class TransactionResponseDto {
+
+    private Integer userId;
+    private Integer amount;
+    private TransactionStatus status;
+
 }

@@ -1,2 +1,11 @@
-package com.vinsguru.userservice.dto;public class TransactionRequestDto {
+package com.vinsguru.userservice.dto;
+
+import lombok.Data;
+
+@Data
+public class TransactionRequestDto {
+
+    private Integer userId;
+    private Integer amount;
+
 }
