@@ -8,6 +8,7 @@ import com.vinsguru.userservice.repository.UserTransactionRepository;
 import com.vinsguru.userservice.util.EntityDtoUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -24,6 +25,11 @@ public class TransactionService {
                 .flatMap(transactionRepository::save)
                 .map(userTransaction -> EntityDtoUtil.toDto(requestDto, TransactionStatus.APPROVED))
                 .defaultIfEmpty(EntityDtoUtil.toDto(requestDto, TransactionStatus.DECLINED));
+    }
+
+    public Flux<TransactionResponseDto> findAllTransactionsByUserId(final String userId) {
+        return transactionRepository.findByUserId(userId)
+                .mapNotNull(EntityDtoUtil::toDto);
     }
 
 }

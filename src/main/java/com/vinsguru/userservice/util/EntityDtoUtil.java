@@ -44,4 +44,11 @@ public class EntityDtoUtil {
                 .build();
     }
 
+    public TransactionResponseDto toDto(UserTransaction userTransaction) {
+        return TransactionResponseDto.builder()
+                .userId(userTransaction.getUserId())
+                .amount(userTransaction.getAmount())
+                .build();
+    }
+
 }
